@@ -14,9 +14,9 @@ public class RollServiceController {
     @Autowired
     RoleServiceRepository roleServiceRepository;
 
-    @GetMapping("role/{roleId}")
-    public RoleDetails getRoleDetails(@PathVariable Long roleId){
-        Optional<RoleDetails> roleDetails = roleServiceRepository.findById(roleId);
+    @GetMapping("role/{roleName}")
+    public RoleDetails getRoleDetails(@PathVariable String roleName){
+        Optional<RoleDetails> roleDetails = roleServiceRepository.findByRoleName(roleName);
         if(roleDetails.isPresent()){
             return roleDetails.get();
         }else
